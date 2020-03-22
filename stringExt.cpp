@@ -150,3 +150,12 @@ bool IsNumericStr(const string& str)
     tmpStream >> tmpNum;
     return tmpStream.eof();
 }
+
+void WriteStrToFile(ofstream& outFile, const string& outStr)
+//Write the given string to the given binary file
+{
+    unsigned int tmpStrLen;
+    tmpStrLen = outStr.length();
+    outFile.write((char*)&tmpStrLen, sizeof(tmpStrLen));
+    outFile.write(outStr.data(), tmpStrLen);
+}
